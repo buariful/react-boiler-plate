@@ -13,7 +13,7 @@ const Login = () => {
     const [user] = useAuthState(auth);
     const navigate = useNavigate();
     const location = useLocation();
-    const from = location?.state?.from?.pathname || '/dashboard';
+    const from = location?.state?.from?.pathname || '/dashboard/search';
 
     if (user) {
     }
@@ -26,6 +26,9 @@ const Login = () => {
                 // navigate(from, { replace: true })
                 navigate(from, { replace: true })
             })
+        if (user) {
+            console.log(user)
+        }
     }
 
     const googleSign = () => {

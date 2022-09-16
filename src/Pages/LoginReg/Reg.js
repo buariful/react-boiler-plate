@@ -11,7 +11,7 @@ const Reg = () => {
         error,
     ] = useCreateUserWithEmailAndPassword(auth);
     const location = useLocation();
-    const from = location?.state?.from?.pathname || '/dashboard';
+    const from = location?.state?.from?.pathname || '/dashboard/search';
 
     const [updateProfile, updating] = useUpdateProfile(auth);
 
@@ -24,7 +24,7 @@ const Reg = () => {
         const password = event.target.password.value;
         await createUserWithEmailAndPassword(email, password);
         await updateProfile({ displayName: name });
-        navigate('/dashboard')
+        navigate('/dashboard/search')
     }
 
     const googleSign = () => {

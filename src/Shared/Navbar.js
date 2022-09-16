@@ -9,7 +9,7 @@ const Navbar = () => {
 
     return (
         <div>
-            <div className="navbar fixed top-0 bg-accent text-white py-3 z-20">
+            <div className="navbar bg-accent text-white py-3 z-20">
                 <div className="navbar-start">
                     {/* mobile */}
                     <div className="dropdown">

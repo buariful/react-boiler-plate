@@ -1,19 +1,23 @@
 import React from 'react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Shared from '../../Shared/Shared';
 import './Banner.css';
 
 const Banner = () => {
     const [gender, setGender] = useState('Men')
     const navigate = useNavigate();
+    const [limit, setLimit] = Shared()
 
     const handleSearch = event => {
         event.preventDefault();
-        const review = {
-            ab: gender,
+        const search = {
+            gender: gender,
             age: event.target.age.value,
         }
-        navigate('/dashboard');
+        setLimit(search)
+
+        navigate('/dashboard/search');
 
     }
     return (
@@ -33,7 +37,7 @@ const Banner = () => {
                                     <span className="label-text">You are looking for</span>
                                 </label>
 
-                                <select className="select select-bordered w-full max-w-xs" value={gender} onChange={(e) => setGender(e.target.value)} >
+                                <select disabled className="select select-bordered w-full max-w-xs" value={gender} onChange={(e) => setGender(e.target.value)} >
                                     <option name='gender' value='men'>Men</option>
                                     <option name='gender' value='women'>women</option>
                                 </select>
@@ -41,9 +45,9 @@ const Banner = () => {
                                 <label className="label">
                                     <span className="label-text">Age below</span>
                                 </label>
-                                <input type="Number" name='age' placeholder="Age" className="input input-bordered w-full max-w-xs" />
+                                <input type="Number" disabled name='age' required placeholder="Age" className="input input-bordered w-full max-w-xs" />
 
-                                <input type="submit" className='btn btn-primary text-white mt-5' value='search' />
+                                <input type="submit" className='btn btn-primary text-white mt-5' value='Dashboard for search' />
                             </form>
                         </div>
                     </div>
